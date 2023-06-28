@@ -44,7 +44,11 @@ streamlit.dataframe(my_data_rows)
 
 streamlit.header("Please add a fruit!")
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
-fruit_added = pandas.concat(my_data_rows,add_my_fruit)
+my_cur.execute("insert into fruit_load_list(FRUIT_NAME,add_my_fruit)")
+fruit_added = my_cur.fetchall()
+
+streamlit.dataframe(fruit_added)
+
 
 
 
